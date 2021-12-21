@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>be.rlab</groupId>
+    <artifactId>freire</artifactId>
+    <packaging>jar</packaging>
+    <version>1.5.4-SNAPSHOT</version>
+
+    <licenses>
+        <license>
+            <name>GPL Version 2.0</name>
+            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+            <distribution>repo</distribution>
+            <comments>Free Software License</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>seykron</id>
+            <name>seykron</name>
+            <email>seykron@rlab.be</email>
+            <organization>R'lyeh Hacklab</organization>
+            <organizationUrl>https://rlab.be</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Argentina/Buenos_Aires</timezone>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- Maven -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <assertj.version>3.21.0</assertj.version>
+        <mockito.version>3.12.4</mockito.version>
+        <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
+        <bytebuddy.version>[1.11,)</bytebuddy.version>
+
+        <qos.logback.logback-classic.version>1.2.6</qos.logback.logback-classic.version>
+        <slf4j.all.version>1.7.32</slf4j.all.version>
+        <joda.version>2.10.12</joda.version>
+        <mordant.version>2.0.0-beta2</mordant.version>
+
+        <java.version>1.8</java.version>
+        <kotlin.version>1.5.31</kotlin.version>
+        <kotlin-coroutines.version>1.5.1</kotlin-coroutines.version>
+        <kotlin.code.style>official</kotlin.code.style>
+    </properties>
+
+    <dependencies>
+        <!-- Kotlin -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+            <version>${kotlin-coroutines.version}</version>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${bytebuddy.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>${bytebuddy.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.nhaarman.mockitokotlin2</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>${mockito-kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.all.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.all.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.all.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${qos.logback.logback-classic.version}</version>
+        </dependency>
+
+        <!-- Utils -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ajalt.mordant</groupId>
+            <artifactId>mordant-jvm</artifactId>
+            <version>${mordant.version}</version>
+        </dependency>
+
+        <!-- Terminal -->
+        <dependency>
+            <groupId>org.jetbrains.pty4j</groupId>
+            <artifactId>pty4j</artifactId>
+            <version>0.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
+        </dependency>
+
+        <!-- AFIP -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.69</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcmail-jdk15on</artifactId>
+            <version>1.69</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.xml.ws</groupId>-->
+<!--            <artifactId>jakarta.xml.ws-api</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.sun.xml.ws</groupId>-->
+<!--            <artifactId>jaxws-rt</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.axis2</groupId>-->
+<!--            <artifactId>axis2-kernel</artifactId>-->
+<!--            <version>1.8.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.axis2</groupId>-->
+<!--            <artifactId>axis2-transport-http</artifactId>-->
+<!--            <version>1.8.0</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>freire</finalName>
+<!--        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>-->
+<!--        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>-->
+        <plugins>
+            <!-- Deploy plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+            <!-- Release plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <!-- <inherited>true</inherited> -->
+                <configuration>
+                    <releaseProfiles>release</releaseProfiles>
+                    <localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+            <!-- Jar plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <excludes>
+                        <!-- exclude any logback configuration from the jar -->
+                        <exclude>**/logback.xml</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>java-test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmTarget>1.8</jvmTarget>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>freire</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>be.rlab.freire.ApplicationKt</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptors>
+                        <descriptor>build/assembly.xml</descriptor>
+                    </descriptors>
+                    <skipAssembly>${isSnapshotBuild}</skipAssembly>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>build-helper-regex-is-snapshot-used</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>isSnapshotBuild</name>
+                            <value>${project.version}</value>
+                            <regex>.*-SNAPSHOT</regex>
+                            <replacement>true</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>6.2.2</version>
+                <configuration>
+                    <failBuildOnCVSS>8</failBuildOnCVSS>
+                    <skipProvidedScope>true</skipProvidedScope>
+                    <skipRuntimeScope>true</skipRuntimeScope>
+                    <suppressionFiles>${user.dir}/build/owasp-suppressions.xml</suppressionFiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>kotlin-eap</id>
+            <name>Kotlin EAP Repository</name>
+            <url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <name>JCenter Repository</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>jitpack</id>
+            <name>JitPack Repository</name>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>bintray-jetbrains-pty4j</id>
+            <name>bintray</name>
+            <url>https://jetbrains.bintray.com/pty4j</url>
+        </repository>
+        <repository>
+            <id>rlab</id>
+            <name>R'lyeh Repository</name>
+            <url>file://${MVN_LOCAL_REPO}</url>
+        </repository>
+    </repositories>
+
+    <!-- SCM -->
+    <scm>
+        <connection>scm:git:git@git.rlab.be:seykron/freire.git</connection>
+        <developerConnection>scm:git:git@git.rlab.be:seykron/freire.git</developerConnection>
+        <url>https://git.rlab.be/seykron/freire</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <url>file://${MVN_LOCAL_REPO}</url>
+        </repository>
+    </distributionManagement>
+</project>
