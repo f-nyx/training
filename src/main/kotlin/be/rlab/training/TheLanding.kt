@@ -40,7 +40,7 @@ import be.rlab.freire.cpu.operations.Mov
  * 4. If the result of the last subtraction is zero, print the text: "Empty", otherwise print the text: "Full".
  * 5. Exit the program successfully.
  */
-val processor2 = entryPoint {
+val processor = entryPoint {
     mov(ref(0x1000), 11)
     mov(ref(0x1001), 13)
     mov(ref(0x1002), 15)
