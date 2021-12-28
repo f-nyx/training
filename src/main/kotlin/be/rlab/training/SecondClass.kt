@@ -14,7 +14,7 @@ val processor4 = entryPoint {
     sub(r04, r03)
     print(res)
     end() // Ends the program.
-    }
+}
 
 
 // DO NOT CHANGE ANY CODE FROM HERE, IT VALIDATES THE EXERCISE.
