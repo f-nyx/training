@@ -13,8 +13,14 @@ fun main() {
     val case2: Boolean = plant == tipo2
     val case3: Boolean = plant == tipo3
 
-    if (case1) println(" /regar diariamente/ ")
-    if (case2) println(" /regar día por medio/ ")
-    if (case3) println(" /regar semanalmente/ ")
+    if (case1) {
+        println(" /regar diariamente/ ")
+    }
+    if (case2) {
+        println(" /regar día por medio/ ")
+    }
+    if (case3) {
+        println(" /regar semanalmente/ ")
+    }
 
 }

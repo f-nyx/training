@@ -6,6 +6,7 @@ fun main() {
     val tipo2: String = "interior"
     val tipo3: String = "sucus"
 
+    print("ingrese el tipo de planta: ")
     val plantInput: String = readLine()!!.toString()
     val plant: String = plantInput
 
@@ -17,6 +18,7 @@ fun main() {
     val mintempinterior: Int = 25
     val mintempsucus: Int = 32
 
+    print("ingrese la temperatura: ")
     val tempInput: String = readLine()!!
     val temp: Int = tempInput.toInt()
 
@@ -25,14 +27,26 @@ fun main() {
     val casetemp3: Boolean = temp > mintempsucus
 
     if (case1) {
-        if (casetemp1) print(" /regar tropical/ ")
+        if (casetemp1) {
+            println(" /regar tropical/ ")
+        } else {
+            println("no regar tropical")
+        }
     }
 
     if (case2) {
-        if (casetemp2) print(" /regar interior/ ")
+        if (casetemp2) {
+            println(" /regar interior/ ")
+        } else {
+            println("no regar interior")
+        }
     }
 
     if (case3) {
-        if (casetemp3) print(" /regar sucus/ ")
+        if (casetemp3) {
+            println(" /regar sucus/ ")
+        } else {
+            println("no regar sucus")
+        }
     }
 }
