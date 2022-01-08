@@ -65,6 +65,8 @@ fun main() {
         return planta.estacion == "verano"
     }
 
+    // filter pide como parametro una funcion que reciba un solo parametro
+    // del tipo de elemento de la lista, y que devuelva un valor de tipo Boolean
     val plantasDeVerano = plantas.filter(::filterSummerPlant)
 
     println("estacion oregano: ${oregano.estacion}")
