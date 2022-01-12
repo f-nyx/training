@@ -20,3 +20,13 @@ usuario, mostrarle la lista de plantas que mejor se ajustan a lo que busca.
 Ejercicio 4. Además de las plantas disponibles todo el año, el catálogo también ofrece aromáticas estacionales.
 El vivero tiene dos aromáticas anuales, dos bianuales, y dos perennes. También debemos mostrarle al usuario las
 aromáticas disponibles en la estación actual.
+
+Ejercicio 5. usando lo que hicimos la clase 5,
+1. crear una función que devuelva una planta valida
+2. crear una función que devuelva la temperatura
+3. crear una función "ejercicio5" que resuelva todo el ejercicio y que reciba como parámetros las temperaturas de cada tipo de planta. Hint: llamar a esta función desde main() de esta forma: ejercicio5(tempInterior = 25, tempTropical = 20, tempSucus = 32)
+
+Ejercicio 6. usando lo que hicimos la clase 5:
+1. crear la clase Planta que tenga las propiedades "tipo" y "temperatura"
+2. crear un objeto de tipo Planta para cada tipo de planta
+3. resolver el ejercicio usando los objetos en lugar de las variables
