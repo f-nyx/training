@@ -2,12 +2,29 @@ package be.rlab.training
 
 fun main() {
 
-    val tipo1: String = "tropical"
-    val tipo2: String = "interior"
-    val tipo3: String = "sucus"
-    val tipos: List<String> = listOf(tipo1, tipo2, tipo3)
+    class Planta {
+        var tipo: String = "sucus"
+        var temperatura: Int = 32
+    }
+    val plantaInterior = Planta()
+
+    plantaInterior.tipo = "interior"
+    plantaInterior.temperatura = 20
+
+    val plantaTropical = Planta()
+
+    plantaTropical.tipo = "tropical"
+    plantaTropical.temperatura = 25
+
+    val plantaSucus = Planta()
+
+    plantaSucus.tipo = "sucus"
+    plantaSucus.temperatura = 32
+
+    val tipos: List<String> = listOf("interior", "tropical", "sucus")
 
     var plantInput: String
+
     do {
         print("ingrese el tipo de planta: ")
         plantInput = readLine()!!.trim().lowercase()
@@ -19,22 +36,18 @@ fun main() {
 
     val plant: String = plantInput
 
-    val minTempTropical: Int = 20
-    val minTempInterior: Int = 25
-    val minTempSucus: Int = 32
-
     print("ingrese la temperatura: ")
     val tempInput: String = readLine()!!
     val temp: Int = tempInput.toInt()
 
     when {
-        plant == tipo1 && temp > minTempTropical -> {
+        plant == plantaInterior.tipo && (temp > plantaInterior.temperatura) -> {
             println(" /regar tropical/ ")
         }
-        plant == tipo2 && temp > minTempInterior -> {
+        plant == plantaTropical.tipo && temp > plantaTropical.temperatura -> {
             println(" /regar interior/ ")
         }
-        plant == tipo3 && temp > minTempSucus -> {
+        plant == plantaSucus.tipo && temp > plantaSucus.temperatura -> {
             println(" /regar sucus/ ")
         }
         else -> {
