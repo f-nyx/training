@@ -22,8 +22,8 @@ El vivero tiene dos aromáticas anuales, dos bianuales, y dos perennes. También
 aromáticas disponibles en la estación actual.
 
 Ejercicio 5. usando lo que hicimos la clase 5,
-1. crear una función que devuelva una planta valida
-2. crear una función que devuelva la temperatura
+1. crear una función que le pida al usuario un tipo de planta y devuelva un tipo de planta valido
+2. crear una función que le pida al usuario una temperatura y devuelva la temperatura que puso el usuario
 3. crear una función "ejercicio5" que resuelva todo el ejercicio y que reciba como parámetros las temperaturas de cada tipo de planta. Hint: llamar a esta función desde main() de esta forma: ejercicio5(tempInterior = 25, tempTropical = 20, tempSucus = 32)
 
 Ejercicio 6. usando lo que hicimos la clase 5:
