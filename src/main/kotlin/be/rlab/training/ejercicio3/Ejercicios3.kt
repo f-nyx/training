@@ -33,8 +33,15 @@ fun pedirPlanta(plantas: List<Planta>): String {
     return plantInput
 }
 
-fun main() {
+fun pedirTemperatura(): Int {
 
+    print("ingrese la temperatura: ")
+    val tempInput = readLine()!!
+
+    return tempInput.toInt()
+}
+
+fun ejercicio5(tempInterior: Int, tempTropical: Int, tempSucus: Int ): Boolean {
     val plantaInterior = Planta()
 
     plantaInterior.tipo = "interior"
@@ -58,9 +65,7 @@ fun main() {
 
     val plant: String = plantInput
 
-    print("ingrese la temperatura: ")
-    val tempInput: String = readLine()!!
-    val temp: Int = tempInput.toInt()
+    val temp: Int = pedirTemperatura()
 
     when {
         plant == plantaInterior.tipo && (temp > plantaInterior.temperatura) -> {
@@ -76,4 +81,9 @@ fun main() {
             println("no regar $plantInput")
         }
     }
+return true
+}
+
+fun main() {
+    ejercicio5(tempInterior = 25, tempTropical = 20, tempSucus = 32)
 }
