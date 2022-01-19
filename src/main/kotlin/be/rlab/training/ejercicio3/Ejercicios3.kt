@@ -1,8 +1,8 @@
 package be.rlab.training.ejercicio3
 
-class Planta {
-    var tipo: String = "sucus"
-    var temperatura: Int = 32
+class Planta(tipoInicial: String, temperaturaInicial: Int) {
+    var tipo: String = tipoInicial
+    var temperatura: Int = temperaturaInicial
 }
 
 fun pedirPlanta(plantas: List<Planta>): String {
@@ -41,22 +41,10 @@ fun pedirTemperatura(): Int {
     return tempInput.toInt()
 }
 
-fun ejercicio5(tempInterior: Int, tempTropical: Int, tempSucus: Int ): Boolean {
-    val plantaInterior = Planta()
-
-    plantaInterior.tipo = "interior"
-    plantaInterior.temperatura = 20
-
-    val plantaTropical = Planta()
-
-    plantaTropical.tipo = "tropical"
-    plantaTropical.temperatura = 25
-
-    val plantaSucus = Planta()
-
-    plantaSucus.tipo = "sucus"
-    plantaSucus.temperatura = 32
-
+fun resolverSiRegar() {
+    val plantaInterior = Planta(tipoInicial = "interior", temperaturaInicial = 20)
+    val plantaTropical = Planta(tipoInicial = "tropical", temperaturaInicial = 25)
+    val plantaSucus = Planta(tipoInicial = "sucus", temperaturaInicial = 32)
     val plantas: List<Planta> = listOf(plantaInterior, plantaTropical, plantaSucus)
 
     // las funciones son una forma de abstraer y encapsular comportamiento
@@ -81,9 +69,8 @@ fun ejercicio5(tempInterior: Int, tempTropical: Int, tempSucus: Int ): Boolean {
             println("no regar $plantInput")
         }
     }
-return true
 }
 
 fun main() {
-    ejercicio5(tempInterior = 25, tempTropical = 20, tempSucus = 32)
+    resolverSiRegar()
 }

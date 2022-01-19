@@ -10,54 +10,50 @@ package be.rlab.training
  *
  */
 
-class Precio {
-    var moneda: String = "pesos"
-    var valor: Double = 0.0
-}
+class Precio (
+    var moneda: String,
+    var valor: Double
+)
 
 // La clase Planta construye objetos de tipo Planta
 // La clase es un molde y todos los objetos van a tener las propiedades y funciones
 // que esten definidas en la clase.
-class Planta {
-    var estacion: String = "verano"
+class Planta(
+    val estacion: String,
+    val nombre: String,
     // la propiedad precio puede contener un objeto de tipo precio
-    var precio: Precio = Precio()
-    var nombre: String = ""
-}
+    var precio: Precio
+)
 
-// Un objeto agrupa propiedades y compoertamiento
+// Un objeto agrupa propiedades y comportamiento
 object Lavanda {
     var estacion: String = "verano"
-    var precio = Precio()
+    var precio = Precio(moneda = "pesos", valor = 20.0)
 }
 
-// Un objecto agrupa propiedades y compoertamiento
+// Un objecto agrupa propiedades y comportamiento
 object Romero {
     var estacion: String = "verano"
-    var precio = Precio()
+    var precio = Precio(moneda = "pesos", valor = 25.0)
 }
 
-// Un objecto agrupa propiedades y compoertamiento
+// Un objecto agrupa propiedades y comportamiento
 object Tomillo {
     var estacion: String = "verano"
-    var precio = Precio()
+    var precio = Precio(moneda = "pesos", valor = 20.0)
 }
 
 fun main() {
-    val lavanda = Planta()
-    val romero = Planta()
-    val tomillo = Planta()
-    val oregano = Planta()
-    val melisa = Planta()
+    val lavanda = Planta(nombre = "lavanda", estacion = "verano", precio = Precio(moneda = "pesos", valor = 20.0))
+    val romero = Planta(nombre = "romero", estacion = "verano", precio = Precio(moneda = "pesos", valor = 25.0))
+    val tomillo = Planta(nombre = "tomillo", estacion = "verano", precio = Precio(moneda = "pesos", valor = 20.0))
+    val oregano = Planta(nombre = "oregano", estacion = "primavera", precio = Precio(moneda = "pesos", valor = 20.0))
+    val melisa = Planta(nombre = "melisa", estacion = "otoño", precio = Precio(moneda = "pesos", valor = 20.0))
     val plantas: List<Planta> = listOf(lavanda, romero, tomillo, oregano, melisa)
 
-    lavanda.nombre = "lavanda"
-    romero.nombre = "romero"
-    tomillo.nombre = "tomillo"
-    oregano.nombre = "oregano"
-    oregano.estacion = "primavera"
-    melisa.nombre = "melisa"
-    melisa.estacion = "otoño"
+    if (plantas.contains(lavanda)) {
+        println("la lista esta vacia")
+    }
 
     // filter va a ejecutar la funcion una vez por cada elemento de la lista
     // filter va a pasar como parametro cada elemento de la lista
@@ -77,7 +73,6 @@ fun main() {
 
     lavanda.precio.valor = 10.0
     println(lavanda.estacion)
-    lavanda.estacion = "otoño"
     println(lavanda.estacion)
     println("${lavanda.precio.valor} ${lavanda.precio.moneda}")
 }
