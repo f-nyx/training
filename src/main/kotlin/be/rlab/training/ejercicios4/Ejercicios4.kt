@@ -13,6 +13,42 @@ class Planta(
     val luz: String
 )
 
+fun pedirTipo(plantas: List<Planta>): String {
+    var tipoDePlantaInput: String
+
+    do {
+        println("¿Colocará la planta en interior o exterior?")
+        tipoDePlantaInput = readLine()!!.trim().lowercase()
+        val isValid: Boolean = plantas.any { item: Planta ->
+            tipoDePlantaInput == item.tipo
+        }
+
+        if (isValid == false) {
+            val tiposValidos: String = plantas.joinToString { planta: Planta -> planta.tipo }
+            println("Las opciones son: $tiposValidos")
+        }
+
+    } while (isValid == false)
+    return tipoDePlantaInput
+}
+
+
+fun pedirCondicionesLuz(plantas: List<Planta>): String {
+    var condicionesLuzInput: String
+    do {
+        println("Cuales son las codiciones de luz?")
+        condicionesLuzInput = readLine()!!.trim().lowercase()
+        val isValid: Boolean = plantas.any { item: Planta ->
+            condicionesLuzInput == item.luz
+        }
+        if (isValid == false) {
+            val condicionesLuzValidos: String = plantas.joinToString { planta: Planta -> planta.luz }
+            println("Las opciones son: $condicionesLuzValidos")
+        }
+
+    } while (isValid == false)
+    return condicionesLuzInput
+}
 
 fun main() {
     val ceropegia = Planta(nombre = "ceropegia", tipo = "interior", luz = "mucha")
@@ -22,90 +58,16 @@ fun main() {
     val begonia = Planta(nombre = "begonia", tipo = "exterior", luz = "n/a")
     val verbena = Planta(nombre = "verbena", tipo = "exterior", luz = "n/a")
     val violeta = Planta(nombre = "violeta", tipo = "exterior", luz = "n/a")
-
     val plantas: List<Planta> = listOf(ceropegia, croton, dracena, potus, begonia, verbena, violeta)
 
+    val tipoDePlantaInput: String = pedirTipo(plantas = plantas)
+    val condicionesLuzInput: String = pedirCondicionesLuz(plantas = plantas)
 
-    val tipoDePlantaInput: String = readLine()!!.trim().lowercase()
-
-    val intensidadLuzInput: String = readLine()!!.trim().lowercase()
-
-    fun pedirTipo(tipo:String): String {
-        do {
-            println("¿Colocará la planta en interior o exterior?")
-
-            fun tipoValido(item: Planta): Boolean {
-                return tipoDePlantaInput == item.tipo
-            }
-            val isValid: Boolean = plantas.any(::tipoValido)
-
-            if (plantas.any { item: Planta -> tipoDePlantaInput == item.tipo } == false) {
-
-                val tiposValidos: String = plantas.joinToString { planta: Planta -> planta.tipo }
-                println("Las opciones son: $tiposValidos")
-            }
-
-        } while(isValid == false)
-
-        val esInterior: Boolean = tipoDePlantaInput == "interior"
-
-       do {
-           fun pedirIntensidad(): String {
-               do {
-                   println("¿El espacio cuenta con poca luz o mucha luz?")
-
-                   fun intensidadValido(item: Planta): Boolean {
-                       return intensidadLuzInput == item.luz
-                   }
-
-                   val isValid: Boolean = plantas.any(::intensidadValido)
-
-                   if (plantas.any { item: Planta -> intensidadLuzInput == item.luz } == false) {
-
-                       val luzValidos: String = plantas.joinToString { planta: Planta -> planta.luz }
-                       println("Las opciones son: $luzValidos")
-                   }
-                   return intensidadLuzInput
-
-               } while (isValid == false)
-
-       }
-           while (esInterior == true)
-               return intensidadLuzInput
-
-
-           val tipoDePlanta: String = pedirTipo(tipo)
-
-           val intensidadLuz: String = pedirIntensidad()
-
-    fun filterPlantaInteriorPocaLuz(planta: Planta): Boolean {
-         return planta.luz == "poca"
-           }
-    val plantasDeInteriorPocaLuz = plantas.filter(::filterPlantaInteriorPocaLuz)
-
-
-    fun filterPlantaInteriorMuchaLuz(planta: Planta): Boolean {
-         return planta.luz == "mucha"
-           }
-    val plantasDeInteriorMuchaLuz = plantas.filter(::filterPlantaInteriorMuchaLuz)
-
-
-    fun filterPlantaExterior(planta: Planta): Boolean {
-         return planta.tipo == "exterior"
-           }
-    val plantasDeExterior = plantas.filter(::filterPlantaExterior)
-
-    when {
-          tipoDePlanta == "interior" && (intensidadLuz == "poca") -> {
-          println("Las plantas disponibles son: $plantasDeInteriorPocaLuz")
-               }
-          tipoDePlanta == "interior" && (intensidadLuz == "mucha") -> {
-          println("Las plantas disponibles son: $plantasDeInteriorMuchaLuz")
-               }
-          tipoDePlanta == "exterior" -> {
-          println("Las plantas disponibles son: $plantasDeExterior")
-               }
-          }
-
-       }}}
-
+    val resolvedPlants: List<Planta> = plantas.filter { plant: Planta ->
+        plant.tipo == tipoDePlantaInput && plant.luz == condicionesLuzInput
+    }
+    val catalogo: String = resolvedPlants.joinToString { plant: Planta ->
+        plant.nombre
+    }
+    println("Plantas disponibles: ${catalogo}")
+}

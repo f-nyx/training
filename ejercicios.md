@@ -18,8 +18,8 @@ planta necesita y las condiciones de luz del lugar donde la va a colocar. Con to
 usuario, mostrarle la lista de plantas que mejor se ajustan a lo que busca.
 
 Ejercicio 4. Además de las plantas disponibles todo el año, el catálogo también ofrece aromáticas estacionales.
-El vivero tiene dos aromáticas anuales, dos bianuales, y dos perennes. También debemos mostrarle al usuario las
-aromáticas disponibles en la estación actual.
+El vivero tiene dos aromáticas de estacion, dos aromaticas disponibles en 2 estaciones del ano, y dos todo el ano.
+También debemos mostrarle al usuario las aromáticas disponibles en la estación actual.
 
 Ejercicio 5. usando lo que hicimos la clase 5,
 1. crear una función que le pida al usuario un tipo de planta y devuelva un tipo de planta valido
