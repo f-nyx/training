@@ -2,15 +2,17 @@
 
 package be.rlab.training.ejercicios4
 
-//4 plantas de interior, 2 mucha luz (ceropegia, croton), y 2 poca luz (dracena, potus)
-//3 plantas de exterior (begonia, verbena, violeta)
-//preguntar al usuario: Colocará la planta en interior o exterior? Si responde interior, El espacio
-// cuenta con poca luz o mucha luz?
+import be.rlab.training.Seasons.seasons
 
 class Planta(
     val nombre: String,
     val tipo: String,
     val luz: String
+)
+
+class Aromatica(
+    val name: String,
+    val season: String,
 )
 
 fun pedirTipo(plantas: List<Planta>): String {
@@ -60,6 +62,14 @@ fun main() {
     val violeta = Planta(nombre = "violeta", tipo = "exterior", luz = "n/a")
     val plantas: List<Planta> = listOf(ceropegia, croton, dracena, potus, begonia, verbena, violeta)
 
+    val albahaca = Aromatica(name = "albahaca", season = "spring")
+    val ciboulette = Aromatica(name = "ciboulette", season = "spring")
+    val romero = Aromatica(name = "romero", season = "spring-autumn")
+    val oregano = Aromatica(name = "oregano", season = "spring-autumn")
+    val lavandin = Aromatica(name = "lavandin", season = "spring-summer-autumn-winter")
+    val melisa = Aromatica(name = "melisa", season = "spring-summer-autumn-winter")
+    val aromaticas: List<Aromatica> = listOf(albahaca, ciboulette, romero, oregano, lavandin, melisa)
+
     val tipoDePlantaInput: String = pedirTipo(plantas = plantas)
     val condicionesLuzInput: String = pedirCondicionesLuz(plantas = plantas)
 
@@ -69,5 +79,16 @@ fun main() {
     val catalogo: String = resolvedPlants.joinToString { plant: Planta ->
         plant.nombre
     }
-    println("Plantas disponibles: ${catalogo}")
+
+    val currentSeason: String = seasons.random()
+
+    val resolvedAromaticas: List<Aromatica> = aromaticas.filter { aromatica: Aromatica ->
+        currentSeason in aromatica.season
+    }
+
+    val aromaticasestacionales: String = resolvedAromaticas.joinToString {aromatica: Aromatica ->
+        aromatica.name
+    }
+
+    println("Plantas disponibles: ${catalogo}. También están disponibles las siguientes aromaticas: ${aromaticasestacionales}")
 }
