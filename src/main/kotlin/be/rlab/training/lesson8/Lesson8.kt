@@ -1,5 +1,7 @@
 package be.rlab.training.lesson8
 
+import org.joda.time.DateTime
+
 class Vehicle1(
     val carbonPrint: Double
 )
@@ -14,14 +16,21 @@ class Car1(
 // the open keyword means "this class is open for extension" (inheritance).
 // This keyword is mandatory to inherit from this class.
 open class Vehicle2(
-    val carbonPrint: Double
+    val carbonPrint: Double,
+    protected var lastService: DateTime = DateTime.now()
 )
 
 // Inheritance is an identity relationship. We say that the Car IS a Vehicle.
 //
 class Car2(
     val doors: Int
-) : Vehicle2(carbonPrint = 50.0)
+) : Vehicle2(carbonPrint = 50.0) {
+    fun runService() {
+        if (lastService.plusMonths(6).isAfterNow) {
+            println("car service required!")
+        }
+    }
+}
 
 // Inheritance is an identity relationship. We say that the Bike IS a Vehicle.
 // We also can say that both a Bike AND Car2 ARE a Vehicle.
@@ -67,4 +76,5 @@ fun main() {
     println("renault9 is Vehicle2? ${renault9 is Vehicle2}")
     println("olmo is Bike? ${olmo is Bike}")
     println("olmo is Vehicle2? ${olmo is Vehicle2}")
+//    println("renault9 last service ${renault9.lastService}")
 }

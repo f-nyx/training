@@ -2,13 +2,24 @@
 
 package be.rlab.training.ejercicios4
 
-import be.rlab.training.Seasons.seasons
+import be.rlab.training.Seasons
+import org.joda.time.DateTime
 
 class Planta(
     val nombre: String,
     val tipo: String,
     val luz: String
-)
+) {
+    private var lastTime: DateTime = DateTime.now()
+
+    fun water(): Boolean {
+        val mustWater: Boolean = lastTime.plusSeconds(5).isAfterNow
+        if (mustWater) {
+            lastTime = DateTime.now()
+        }
+        return mustWater
+    }
+}
 
 class Aromatica(
     val name: String,
@@ -26,7 +37,9 @@ fun pedirTipo(plantas: List<Planta>): String {
         }
 
         if (isValid == false) {
-            val tiposValidos: String = plantas.joinToString { planta: Planta -> planta.tipo }
+            val tiposValidos: String = plantas
+                .distinctBy { planta: Planta -> planta.tipo }
+                .joinToString { planta: Planta -> planta.tipo }
             println("Las opciones son: $tiposValidos")
         }
 
@@ -44,12 +57,26 @@ fun pedirCondicionesLuz(plantas: List<Planta>): String {
             condicionesLuzInput == item.luz
         }
         if (isValid == false) {
-            val condicionesLuzValidos: String = plantas.joinToString { planta: Planta -> planta.luz }
+            val condicionesLuzValidos: String = plantas
+                .distinctBy { planta: Planta -> planta.luz }
+                .joinToString { planta: Planta -> planta.luz }
             println("Las opciones son: $condicionesLuzValidos")
         }
 
     } while (isValid == false)
     return condicionesLuzInput
+}
+
+fun waterIfRequired(plants: List<Planta>) {
+    plants.forEach { plant: Planta ->
+        val watered: Boolean = plant.water()
+        println("watered: $watered")
+    }
+    Thread.sleep(6000)
+    plants.forEach { plant: Planta ->
+        val watered: Boolean = plant.water()
+        println("watered: $watered")
+    }
 }
 
 fun main() {
@@ -61,6 +88,7 @@ fun main() {
     val verbena = Planta(nombre = "verbena", tipo = "exterior", luz = "n/a")
     val violeta = Planta(nombre = "violeta", tipo = "exterior", luz = "n/a")
     val plantas: List<Planta> = listOf(ceropegia, croton, dracena, potus, begonia, verbena, violeta)
+    waterIfRequired(plantas)
 
     val albahaca = Aromatica(name = "albahaca", season = "spring")
     val ciboulette = Aromatica(name = "ciboulette", season = "spring")
@@ -80,15 +108,15 @@ fun main() {
         plant.nombre
     }
 
-    val currentSeason: String = seasons.random()
+    val currentSeason: String = Seasons.random()
 
     val resolvedAromaticas: List<Aromatica> = aromaticas.filter { aromatica: Aromatica ->
         currentSeason in aromatica.season
     }
 
-    val aromaticasestacionales: String = resolvedAromaticas.joinToString {aromatica: Aromatica ->
+    val aromaticasEstacionales: String = resolvedAromaticas.joinToString {aromatica: Aromatica ->
         aromatica.name
     }
 
-    println("Plantas disponibles: ${catalogo}. También están disponibles las siguientes aromaticas: ${aromaticasestacionales}")
+    println("Plantas disponibles: ${catalogo}. También están disponibles las siguientes aromaticas: ${aromaticasEstacionales}")
 }
