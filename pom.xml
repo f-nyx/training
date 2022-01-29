@@ -35,20 +35,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
-        <assertj.version>3.21.0</assertj.version>
-        <mockito.version>3.12.4</mockito.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <assertj.version>3.22.0</assertj.version>
+        <mockito.version>4.2.0</mockito.version>
         <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
-        <bytebuddy.version>[1.11,)</bytebuddy.version>
+        <bytebuddy.version>1.12.7</bytebuddy.version>
 
-        <qos.logback.logback-classic.version>1.2.6</qos.logback.logback-classic.version>
-        <slf4j.all.version>1.7.32</slf4j.all.version>
-        <joda.version>2.10.12</joda.version>
+        <qos.logback.logback-classic.version>1.2.10</qos.logback.logback-classic.version>
+        <slf4j.all.version>1.7.33</slf4j.all.version>
+        <joda.version>2.10.13</joda.version>
         <mordant.version>2.0.0-beta2</mordant.version>
+        <tehanu.version>3.3.4-SNAPSHOT</tehanu.version>
 
         <java.version>1.8</java.version>
-        <kotlin.version>1.5.31</kotlin.version>
-        <kotlin-coroutines.version>1.5.1</kotlin-coroutines.version>
+        <kotlin.version>1.6.0</kotlin.version>
+        <kotlin-coroutines.version>1.6.0-native-mt</kotlin-coroutines.version>
         <kotlin.code.style>official</kotlin.code.style>
     </properties>
 
@@ -172,59 +173,25 @@
 
         <!-- Terminal -->
         <dependency>
-            <groupId>org.jetbrains.pty4j</groupId>
-            <artifactId>pty4j</artifactId>
-            <version>0.8.6</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>30.1.1-jre</version>
         </dependency>
 
-        <!-- AFIP -->
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.69</version>
+            <groupId>be.rlab</groupId>
+            <artifactId>tehanu-core</artifactId>
+            <version>${tehanu.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcmail-jdk15on</artifactId>
-            <version>1.69</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>jakarta.xml.ws</groupId>-->
-<!--            <artifactId>jakarta.xml.ws-api</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.sun.xml.ws</groupId>-->
-<!--            <artifactId>jaxws-rt</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.axis2</groupId>-->
-<!--            <artifactId>axis2-kernel</artifactId>-->
-<!--            <version>1.8.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.axis2</groupId>-->
-<!--            <artifactId>axis2-transport-http</artifactId>-->
-<!--            <version>1.8.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.9.3</version>
+            <groupId>be.rlab</groupId>
+            <artifactId>tehanu-client-telegram</artifactId>
+            <version>${tehanu.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>freire</finalName>
-<!--        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>-->
-<!--        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>-->
         <plugins>
             <!-- Deploy plugin -->
             <plugin>
