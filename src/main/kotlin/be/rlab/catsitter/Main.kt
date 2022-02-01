@@ -64,7 +64,7 @@ class Service(
     val lastVisit: Date,
     val totalVisits: Int,
     val notes: String,
-    val payment: Payment
+    val payment: Payment,
     val priceTotal: Int,
     val keys: Keys
 )
