@@ -1,10 +1,9 @@
 # Catsitter
 
 * Client management
-  * Name, address, phone number
-* Contract
+  * Name, address, phone number, Number of cats
+* Contract/Service
   * start and end dates
-  * Number of cats
   * Total visits
   * Prices
     * Sundays and holidays
