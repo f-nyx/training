@@ -2,8 +2,18 @@ import be.rlab.tehanu.Tehanu
 import be.rlab.tehanu.annotations.Handler
 import be.rlab.tehanu.clients.UpdateContext
 import be.rlab.tehanu.clients.telegram.telegram
-import com.sun.tools.javac.resources.CompilerProperties
 import java.util.*
+
+/** Entities relationships.
+ *
+ * one-to-one: an entity has a relation to only one other entity. E.g.: Client to Keys
+ *      -> Client class has a "keys" property of type Keys
+ * one-to-many: an entity has a relation to one or more objects of another entity. E.g.: Client to Cat(s)
+ *      -> Client class has a "cats" property of type List<Cat>
+ * many-to-one: a collection of entities has a relation to a single entity. E.g.: Cars to Owner
+ * many-to-many: one or more entities have a relation to another collection of entities. E.g.: Houses to Owners
+ */
+
 
 @Handler(name = "/say_hello")
 fun sayHello(context: UpdateContext) {
@@ -24,26 +34,11 @@ fun main(args: Array<String>) {
     }.start()
 }
 
-class Cats(
-    var quantity: Int,
-    var catName: String
-)
-
 class Client(
     val name: String,
     val phoneNumber: Number,
     val address : String,
-    val cats: Cats
-)
-//Creo que debería ser una función -pricing- que devuelva -priceTotal-.
-// En ese caso estas variables deberían estar dentro de Service?? o antes??
-class Price(
-    val catQuantity: Int,
-    var totalVisits: Int,
-    val zoneAditional: Int,
-    val sundaysAndHolidaysAditional: Int,
-    val longerVisitsAditional: Int,
-    val keysDeliveryAditional: Int
+    val cats: List<String>
 )
 
 class Payment(
