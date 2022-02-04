@@ -1,7 +1,5 @@
 package be.rlab.catsitter
 
-//Creo que debería ser una función -pricing- que devuelva -priceTotal-.
-// En ese caso estas variables deberían estar dentro de Service?? o antes??
 class PriceBreakdown(
     val catQuantity: Int,
     var totalVisits: Int,

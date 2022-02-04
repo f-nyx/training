@@ -34,33 +34,5 @@ fun main(args: Array<String>) {
     }.start()
 }
 
-class Client(
-    val name: String,
-    val phoneNumber: Number,
-    val address : String,
-    val cats: List<String>
-)
 
-class Payment(
-    val type: Int,
-    val reservation: Int
-)
-
-class Keys(
-    val receivingDate: Date,
-    val receivingPlace: String,
-    val returningDate: Date,
-    val returningPlace: String
-)
-
-class Service(
-    val client: Client,
-    val firstVisit: Date,
-    val lastVisit: Date,
-    val totalVisits: Int,
-    val notes: String,
-    val payment: Payment,
-    val priceTotal: Int,
-    val keys: Keys
-)
 
