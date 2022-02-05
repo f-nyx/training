@@ -45,7 +45,7 @@
         <slf4j.all.version>1.7.33</slf4j.all.version>
         <joda.version>2.10.13</joda.version>
         <mordant.version>2.0.0-beta2</mordant.version>
-        <tehanu.version>3.3.3</tehanu.version>
+        <tehanu.version>3.3.4</tehanu.version>
 
         <java.version>1.8</java.version>
         <kotlin.version>1.6.0</kotlin.version>

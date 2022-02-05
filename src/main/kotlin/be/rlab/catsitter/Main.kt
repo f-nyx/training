@@ -2,7 +2,7 @@ import be.rlab.tehanu.Tehanu
 import be.rlab.tehanu.annotations.Handler
 import be.rlab.tehanu.clients.UpdateContext
 import be.rlab.tehanu.clients.telegram.telegram
-import java.util.*
+import be.rlab.tehanu.messages.model.Message
 
 /** Entities relationships.
  *
@@ -15,9 +15,31 @@ import java.util.*
  */
 
 
+// This is the name of the command we'll use in Telegram (like /newbot in BothFather)
+// UpdateContext documentation: https://git.rlab.be/seykron/tehanu/-/wikis/home#context
 @Handler(name = "/say_hello")
 fun sayHello(context: UpdateContext) {
-    context.answer("hello!")
+    context.talk("hello!")
+}
+
+@Handler(name = "/service_price")
+fun calculateServicePrice(
+    context: UpdateContext,
+    message: Message
+) {
+    val parameters: List<String> = message.text
+        .substringAfter(" ")
+        .split(" ")
+    val totalVisits: Int = parameters[0].split("=")[1].toInt()
+    context.answer(totalVisits.toString())
+
+    // Parse all parameters
+    parameters.forEach { parameter: String ->
+        val chunks: List<String> = parameter.split("=")
+        val name: String = chunks[0]
+        val value: String = chunks[1]
+        context.talk("$name -> $value")
+    }
 }
 
 fun main(args: Array<String>) {
@@ -26,6 +48,7 @@ fun main(args: Array<String>) {
     Tehanu.configure {
         handlers {
             register(::sayHello)
+            register(::calculateServicePrice)
         }
 
         clients {
@@ -33,6 +56,3 @@ fun main(args: Array<String>) {
         }
     }.start()
 }
-
-
-

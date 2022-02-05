@@ -31,6 +31,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 2600)
     }
+
     @Test
     fun testTotal3() {
         val price = PriceBreakdown(
@@ -42,6 +43,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 3300)
     }
+
     @Test
     fun testTotal4() {
         val price = PriceBreakdown(
@@ -53,6 +55,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 3100)
     }
+
     @Test
     fun testTotal5() {
         val price = PriceBreakdown(
@@ -88,6 +91,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 3050)
     }
+
     @Test
     fun testTotal8() {
         val price = PriceBreakdown(
@@ -99,6 +103,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 3900)
     }
+
     @Test
     fun testTotal9() {
         val price = PriceBreakdown(
@@ -110,6 +115,7 @@ class PriceBreakdownTest {
         )
         assert(price.total() == 3600)
     }
+
     @Test
     fun testTotal10() {
         val price = PriceBreakdown(
