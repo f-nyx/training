@@ -1,3 +1,4 @@
+import be.rlab.catsitter.PriceBreakdown
 import be.rlab.tehanu.Tehanu
 import be.rlab.tehanu.annotations.Handler
 import be.rlab.tehanu.clients.UpdateContext
@@ -15,7 +16,7 @@ import be.rlab.tehanu.messages.model.Message
  */
 
 
-// This is the name of the command we'll use in Telegram (like /newbot in BothFather)
+// This is the name of the command we'll use in Telegram (like /newbot in BotFather)
 // UpdateContext documentation: https://git.rlab.be/seykron/tehanu/-/wikis/home#context
 @Handler(name = "/say_hello")
 fun sayHello(context: UpdateContext) {
@@ -42,6 +43,53 @@ fun calculateServicePrice(
     }
 }
 
+@Handler(name = "/price_breakdown1")
+fun calculateBreakdownPrice1(
+    context: UpdateContext,
+    message: Message
+) {
+    context.talk("How many visits?")
+
+    val parameters: List<String> = message.text
+        .substringAfter(" ")
+        .split(" ")
+    val totalVisitsValue: Int = parameters[0].split("=")[1].toInt()
+
+    val price = PriceBreakdown(
+        catQuantity = 1,
+        totalVisits = totalVisitsValue,
+        sundaysAndHolidaysCount = 1,
+        keysDelivery = false,
+        remoteZone = false
+        )
+    context.answer("The price is: $price")
+}
+
+@Handler(name = "/price_breakdown2")
+fun calculateBreakdownPrice2(
+    context: UpdateContext,
+    message: Message
+) {
+    val parameters: List<String> = message.text
+        .substringAfter(" ")
+        .split(" ")
+
+    parameters.forEach { parameter: String ->
+        val chunks: List<String> = parameter.split("=")
+        val name: String = chunks[0]
+        val value: String = chunks[1]
+        context.talk("$name -> $value")
+    }
+    val price = PriceBreakdown(
+        catQuantity = 1,
+        totalVisits = 3,
+        sundaysAndHolidaysCount = 1,
+        keysDelivery = false,
+        remoteZone = false
+    )
+    context.answer("The price is: $price")
+}
+
 fun main(args: Array<String>) {
     println("starting catsitter bot")
 
@@ -49,6 +97,8 @@ fun main(args: Array<String>) {
         handlers {
             register(::sayHello)
             register(::calculateServicePrice)
+            register(::calculateBreakdownPrice1)
+            register(::calculateBreakdownPrice2)
         }
 
         clients {
