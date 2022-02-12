@@ -62,7 +62,7 @@ fun calculateBreakdownPrice1(
         keysDelivery = false,
         remoteZone = false
         )
-    context.answer("The price is: $price")
+    context.answer("The price is: ${price.total()}")
 }
 
 @Handler(name = "/price_breakdown2")
@@ -74,20 +74,29 @@ fun calculateBreakdownPrice2(
         .substringAfter(" ")
         .split(" ")
 
-    parameters.forEach { parameter: String ->
+   // parameters.forEach { parameter: String ->
+   //     val chunks: List<String> = parameter.split("=")
+   //     val name: String = chunks[0]
+   //     val value: String = chunks[1]
+   //     context.talk("$name -> $value")
+   // }
+
+    // Transform the list of parameters to a list of values
+    // The values will be all Strings
+    val values: List<String> = parameters.map { parameter: String ->
         val chunks: List<String> = parameter.split("=")
-        val name: String = chunks[0]
         val value: String = chunks[1]
-        context.talk("$name -> $value")
+        value
     }
+
     val price = PriceBreakdown(
-        catQuantity = 1,
-        totalVisits = 3,
-        sundaysAndHolidaysCount = 1,
-        keysDelivery = false,
-        remoteZone = false
+        catQuantity = values[0].toInt(),
+        totalVisits = values[1].toInt(),
+        sundaysAndHolidaysCount = values[2].toInt(),
+        keysDelivery = values[3].toBoolean(),
+        remoteZone = values[4].toBoolean()
     )
-    context.answer("The price is: $price")
+    context.answer("The price is: ${price.total()}")
 }
 
 fun main(args: Array<String>) {
